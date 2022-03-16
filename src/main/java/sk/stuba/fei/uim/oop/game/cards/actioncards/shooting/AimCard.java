@@ -11,8 +11,6 @@ public class AimCard extends ActionCard {
         boolean successful = pond.addAimAt(index);
         if(!successful){
             performAction(pond);
-        }else{
-            pond.addToTrash(this);
         }
     }
 

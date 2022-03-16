@@ -9,13 +9,13 @@ import sk.stuba.fei.uim.oop.game.cards.tilecards.TileCard;
 import sk.stuba.fei.uim.oop.game.cards.tilecards.WaterCard;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Pond {
 
-    private Aimer aimer;
-    private Deck deck;
-    private ArrayList<TileCard> pond;
+    private final Aimer aimer;
+    private final Deck deck;
+    private final ArrayList<TileCard> pond;
+    private boolean canShoot, canAim;
     public Pond() {
         aimer = new Aimer();
         deck = new Deck();
@@ -105,13 +105,32 @@ public class Pond {
         deck.addToTrash(c);
     }
     public void print(){
+        int numberOfAimers = 0;
         for (int i = 0; i < 6; i++) {
+            System.out.print((i+1) + ". -> ");
             if(aimer.isAimingAt(i)){
                 System.out.print("Aimed - ");
+                numberOfAimers++;
             }else{
                 System.out.print("Not aimed - ");
             }
             System.out.print(pond.get(i) + "\n");
         }
+        if(numberOfAimers == 0){
+            canAim = true;
+            canShoot = false;
+        }else if(numberOfAimers == 6){
+            canAim = false;
+            canShoot = true;
+        }else{
+            canAim = true;
+            canShoot = true;
+        }
+    }
+    public boolean canAim(){
+        return canAim;
+    }
+    public boolean canShoot(){
+        return canShoot;
     }
 }

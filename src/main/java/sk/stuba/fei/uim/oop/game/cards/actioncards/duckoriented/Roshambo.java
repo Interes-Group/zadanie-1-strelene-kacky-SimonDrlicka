@@ -11,7 +11,7 @@ public class Roshambo extends ActionCard {// idk lepsi preklad ma nenapadol :D
     public void performAction(Pond pond) {
         System.out.println("The ducks are moving like crazy!");
         Collections.shuffle(pond.getPond());
-        pond.addToTrash(this);
+
     }
 
     @Override

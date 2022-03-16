@@ -12,8 +12,6 @@ public class WildBillCard extends ActionCard {
         boolean successful = pond.shootAt(choice);
         if(!successful){
             performAction(pond);
-        }else{
-            pond.addToTrash(this);
         }
     }
 

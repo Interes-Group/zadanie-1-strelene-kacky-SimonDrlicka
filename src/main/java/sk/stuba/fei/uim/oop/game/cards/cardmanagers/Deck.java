@@ -20,8 +20,6 @@ public class Deck {
         return deck;
     }
 
-
-
     public Card drawCard(){
         if(deck.isEmpty()){
             deck.addAll(trash);
@@ -32,7 +30,6 @@ public class Deck {
         deck.remove(0);
         return card;
     }
-
     public void addToTrash(Card card){
         trash.add(card);
     }

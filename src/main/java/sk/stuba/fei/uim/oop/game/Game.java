@@ -1,6 +1,7 @@
 package sk.stuba.fei.uim.oop.game;
 
 import sk.stuba.fei.uim.oop.game.cards.Card;
+import sk.stuba.fei.uim.oop.game.cards.actioncards.ActionCard;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.duckoriented.DuckDance;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.duckoriented.DuckMarch;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.duckoriented.Roshambo;
@@ -26,14 +27,34 @@ public class Game {
         start();
     }
 
+    private void initPlayers(){
+        int numberPlayers = ZKlavesnice.readInt("Enter number of players");
+        players = new Player[numberPlayers];
+        for (int i = 0; i < players.length; i++) {
+            String name = ZKlavesnice.readString(String.format("Enter the name of %d. player", i+1));
+            Player player = new Player(name);
+            player.draw(actionCards);
+            player.draw(actionCards);
+            player.draw(actionCards);
+            players[i] = player;
+        }
+    }
+
     public void start(){
         int round = 0;
         while(alivePlayers() != 1){
-            current = players[round%players.length];
-            pond.print();
-            current.showCards();
-            current.performRound(pond);
-            current.draw(actionCards);
+
+            current = players[round % players.length];
+            if(current.isAlive()){
+                pond.print();
+                current.showCards();
+                ActionCard chosenCard = current.performRound(pond);
+                current.draw(actionCards);
+                actionCards.addToTrash(chosenCard);
+                if(!current.isAlive()){
+                    current.throwAllCards(actionCards);
+                }
+            }
             round++;
         }
         printWinner();
@@ -76,16 +97,5 @@ public class Game {
         actionCards.shuffle();
     }
 
-    private void initPlayers(){
-        int numberPlayers = ZKlavesnice.readInt("Enter number of players");
-        players = new Player[numberPlayers];
-        for (int i = 0; i < players.length; i++) {
-            String name = ZKlavesnice.readString(String.format("Enter the name of %d. player", i+1));
-            Player player = new Player(name);
-            player.draw(actionCards);
-            player.draw(actionCards);
-            player.draw(actionCards);
-            players[i] = player;
-        }
-    }
+
 }

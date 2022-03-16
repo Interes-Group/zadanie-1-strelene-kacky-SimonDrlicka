@@ -8,7 +8,7 @@ public class DuckDance extends ActionCard {
     public void performAction(Pond pond) {
         System.out.println("The ducks are dancin'..");
         pond.dance();
-        pond.addToTrash(this);
+
     }
 
     @Override

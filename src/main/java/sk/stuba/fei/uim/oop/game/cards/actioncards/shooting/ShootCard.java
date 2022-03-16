@@ -11,8 +11,6 @@ public class ShootCard extends ActionCard {
         boolean successful = pond.shootAt(index);
         if(!successful){
             performAction(pond);
-        }else{
-            pond.addToTrash(this);
         }
     }
 

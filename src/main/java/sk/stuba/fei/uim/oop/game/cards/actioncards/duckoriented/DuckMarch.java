@@ -8,7 +8,7 @@ public class DuckMarch extends ActionCard {
     @Override
     public void performAction(Pond pond) {
         pond.march();
-        pond.addToTrash(this);
+
     }
 
     @Override
