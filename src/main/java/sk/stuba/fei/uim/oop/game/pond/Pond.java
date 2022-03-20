@@ -46,7 +46,7 @@ public class Pond {
     }
 
     public void dance() {
-        deck.addAllTileCards(pond);
+        deck.addAllCards(pond);
         pond.clear();
         deck.shuffle();
         for (int i = 0; i < 6; i++) {

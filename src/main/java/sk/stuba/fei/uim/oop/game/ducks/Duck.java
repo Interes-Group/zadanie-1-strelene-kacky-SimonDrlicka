@@ -2,7 +2,7 @@ package sk.stuba.fei.uim.oop.game.ducks;
 
 import sk.stuba.fei.uim.oop.game.player.Player;
 
-public class Duck {// TODO: 4. 3. 2022 Implement
+public class Duck {
     private Player owner;
     public Duck(Player player){
         owner = player;

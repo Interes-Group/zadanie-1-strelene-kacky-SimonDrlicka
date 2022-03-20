@@ -33,7 +33,7 @@ public class Deck {
     public void addToTrash(Card card){
         trash.add(card);
     }
-    public void addAllTileCards(List<TileCard> list){
+    public void addAllCards(List<TileCard> list){ // ?? wtf this??
         deck.addAll(list);
     }
     public void addCard(Card card){
