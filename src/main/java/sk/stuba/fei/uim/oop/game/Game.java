@@ -1,6 +1,5 @@
 package sk.stuba.fei.uim.oop.game;
 
-import sk.stuba.fei.uim.oop.game.cards.Card;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.ActionCard;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.duckoriented.DuckDance;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.duckoriented.DuckMarch;
@@ -16,11 +15,11 @@ import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 
 public class Game {
     private Player[] players;
-    private Pond pond;
-    private Deck actionCards;
-    private Player current;
+    private final Pond pond;
+    private final Deck<ActionCard> actionCards;
+
     public Game(){
-        actionCards = new Deck();
+        actionCards = new Deck<>();
         initActionCards();
         initPlayers();
         pond = new Pond().initDeck(players);
@@ -44,7 +43,7 @@ public class Game {
         int round = 0;
         while(alivePlayers() != 1){
 
-            current = players[round % players.length];
+            Player current = players[round % players.length];
             if(current.isAlive()){
                 pond.print();
                 current.showCards();

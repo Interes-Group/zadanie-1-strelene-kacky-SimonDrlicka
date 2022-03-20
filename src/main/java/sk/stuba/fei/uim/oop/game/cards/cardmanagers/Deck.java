@@ -1,44 +1,48 @@
 package sk.stuba.fei.uim.oop.game.cards.cardmanagers;
 
 import sk.stuba.fei.uim.oop.game.cards.Card;
-import sk.stuba.fei.uim.oop.game.cards.tilecards.TileCard;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Deck {
-    protected List<Card> deck;
-    protected List<Card> trash;
+public class Deck<T extends Card>{
+    private final List<T> deck;
+    private final List<T> trash;
+
     public Deck(){
         deck = new ArrayList<>();
         trash = new ArrayList<>();
-
     }
 
-    public List<Card> getDeck() {
+    public List<T> getDeck(){
         return deck;
     }
 
-    public Card drawCard(){
+    public T drawCard(){
         if(deck.isEmpty()){
             deck.addAll(trash);
             trash.clear();
-            Collections.shuffle(deck);
+            shuffle();
         }
-        Card card = deck.get(0);
-        deck.remove(0);
+        T card = deck.get(0);
+        deck.remove(card);
         return card;
     }
-    public void addToTrash(Card card){
+
+    public void addToTrash(T card){
         trash.add(card);
     }
-    public void addAllCards(List<TileCard> list){ // ?? wtf this??
-        deck.addAll(list);
-    }
-    public void addCard(Card card){
+
+    public void addCard(T card){
         deck.add(card);
     }
+
+    public void addAllCards(List<T> cards){
+        deck.addAll(cards);
+
+    }
+
     public void shuffle(){
         Collections.shuffle(deck);
     }

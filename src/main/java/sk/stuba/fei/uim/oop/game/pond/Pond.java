@@ -1,7 +1,6 @@
 package sk.stuba.fei.uim.oop.game.pond;
 
 import sk.stuba.fei.uim.oop.game.aimers.Aimer;
-import sk.stuba.fei.uim.oop.game.cards.Card;
 import sk.stuba.fei.uim.oop.game.cards.cardmanagers.Deck;
 import sk.stuba.fei.uim.oop.game.player.Player;
 import sk.stuba.fei.uim.oop.game.cards.tilecards.DuckCard;
@@ -13,12 +12,13 @@ import java.util.ArrayList;
 public class Pond {
 
     private final Aimer aimer;
-    private final Deck deck;
+    private final Deck<TileCard> deck;
+
     private final ArrayList<TileCard> pond;
     private boolean canShoot, canAim;
     public Pond() {
         aimer = new Aimer();
-        deck = new Deck();
+        deck = new Deck<>();
         pond = new ArrayList<>();
     }
 
@@ -33,7 +33,7 @@ public class Pond {
         }
         deck.shuffle();
         for (int i = 0; i < 6; i++) {
-            pond.add((TileCard) deck.drawCard());
+            pond.add( deck.drawCard());
         }
         return this;
     }
@@ -42,7 +42,7 @@ public class Pond {
         TileCard toRemove = pond.get(0);
         pond.remove(0);
         deck.addCard(toRemove);
-        pond.add((TileCard) deck.drawCard());
+        pond.add(deck.drawCard());
     }
 
     public void dance() {
@@ -50,7 +50,7 @@ public class Pond {
         pond.clear();
         deck.shuffle();
         for (int i = 0; i < 6; i++) {
-            pond.add((TileCard) deck.drawCard());
+            pond.add( deck.drawCard());
         }
     }
 
@@ -95,13 +95,13 @@ public class Pond {
 
     private void removeFromPond(TileCard tileCard){
         pond.remove(tileCard);
-        pond.add((TileCard) deck.drawCard());
+        pond.add(deck.drawCard());
     }
 
     public ArrayList<TileCard> getPond() {
         return pond;
     }
-    public void addToTrash(Card c){
+    public void addToTrash(TileCard c){
         deck.addToTrash(c);
     }
     public void print(){

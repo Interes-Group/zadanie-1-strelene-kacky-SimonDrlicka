@@ -1,6 +1,5 @@
 package sk.stuba.fei.uim.oop.game.player;
 
-import sk.stuba.fei.uim.oop.game.Game;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.ActionCard;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.shooting.AimCard;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.shooting.ShootCard;
@@ -33,8 +32,8 @@ public class Player {
         if(remainingLives == 0) System.out.println("You, " + name + ", died.");
 
     }
-    public void draw(Deck deck){
-        actionCards.add((ActionCard) deck.drawCard());
+    public void draw(Deck<ActionCard> deck){
+        actionCards.add(deck.drawCard());
     }
 
     public void showCards() {
@@ -74,7 +73,7 @@ public class Player {
         }
     }
 
-    public void throwAllCards(Deck d){
+    public void throwAllCards(Deck<ActionCard> d){
         for(ActionCard actionCard: actionCards){
             d.addToTrash(actionCard);
         }
