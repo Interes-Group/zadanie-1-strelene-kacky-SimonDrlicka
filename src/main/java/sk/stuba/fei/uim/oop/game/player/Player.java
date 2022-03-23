@@ -29,7 +29,7 @@ public class Player {
     }
     public void removeLife(){
         remainingLives--;
-        if(remainingLives == 0) System.out.println("You, " + name + ", died.");
+        if(remainingLives == 0) System.out.println(name + ", died!");
 
     }
     public void draw(Deck<ActionCard> deck){
@@ -37,7 +37,7 @@ public class Player {
     }
 
     public void showCards() {
-        System.out.println("******Cards of "+name + "******");
+        System.out.println("\n******Cards of "+name + "******");
         System.out.println("You have " + remainingLives + " ducks left.");
         for(ActionCard card: actionCards){
             System.out.println(card);
@@ -48,27 +48,30 @@ public class Player {
 
         if(actionCards.get(0) instanceof ShootCard
                 && actionCards.get(1) instanceof ShootCard
-                && actionCards.get(2) instanceof ShootCard && !pond.canShoot()){
+                && actionCards.get(2) instanceof ShootCard
+                && !pond.canShoot()){
             System.out.println("You cant use any shoot card. You are throwing one away");
             ActionCard chosen = actionCards.get(0);
             actionCards.remove(0);
             return chosen;
         }else if(actionCards.get(0) instanceof AimCard
                 && actionCards.get(1) instanceof AimCard
-                && actionCards.get(2) instanceof AimCard && !pond.canAim()){
+                && actionCards.get(2) instanceof AimCard
+                && !pond.canAim()){
             System.out.println("You cant use any Aim card. You are throwing one away");
             ActionCard chosen = actionCards.get(0);
             actionCards.remove(0);
             return chosen;
         }else{
             int choice = ZKlavesnice.readInt("Choose card you want to play (1-3): ");
-            if(choice == 0){
-                return performRound(pond);
+            while( 1>choice || choice > 3){
+                choice = ZKlavesnice.readInt("Choose card you want to play (1-3): ");
             }
+
             ActionCard chosen = actionCards.get(choice-1);
             chosen.performAction(pond);
             actionCards.remove(chosen);
-            //TODO: fixni zmenu karty.
+
             return chosen;
         }
     }

@@ -101,9 +101,6 @@ public class Pond {
     public ArrayList<TileCard> getPond() {
         return pond;
     }
-    public void addToTrash(TileCard c){
-        deck.addToTrash(c);
-    }
     public void print(){
         int numberOfAimers = 0;
         for (int i = 0; i < 6; i++) {

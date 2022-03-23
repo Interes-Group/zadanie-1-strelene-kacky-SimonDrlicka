@@ -28,6 +28,11 @@ public class Game {
 
     private void initPlayers(){
         int numberPlayers = ZKlavesnice.readInt("Enter number of players");
+        if(numberPlayers > 6 || numberPlayers < 2){
+            System.out.println("Enter number between 2 and 6!");
+            initPlayers();
+            return;
+        }
         players = new Player[numberPlayers];
         for (int i = 0; i < players.length; i++) {
             String name = ZKlavesnice.readString(String.format("Enter the name of %d. player", i+1));

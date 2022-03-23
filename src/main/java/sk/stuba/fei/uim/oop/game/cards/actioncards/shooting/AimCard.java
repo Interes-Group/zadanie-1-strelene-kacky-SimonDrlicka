@@ -7,7 +7,7 @@ import sk.stuba.fei.uim.oop.utility.ZKlavesnice;
 public class AimCard extends ActionCard {
     @Override
     public void performAction(Pond pond) {
-        if(!pond.canShoot()){
+        if(!pond.canAim()){
             System.out.println("You can't use this card right now, choose another one.");
             return;
         }
