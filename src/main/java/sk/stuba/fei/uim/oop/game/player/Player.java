@@ -69,7 +69,10 @@ public class Player {
             }
 
             ActionCard chosen = actionCards.get(choice-1);
-            chosen.performAction(pond);
+            while(!chosen.performAction(pond)){
+                choice = ZKlavesnice.readInt("Choose another one: ");
+                chosen = actionCards.get(choice-1);
+            }
             actionCards.remove(chosen);
 
             return chosen;

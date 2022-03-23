@@ -8,10 +8,10 @@ import java.util.Collections;
 public class Roshambo extends ActionCard {// idk lepsi preklad ma nenapadol :D
 
     @Override
-    public void performAction(Pond pond) {
+    public boolean performAction(Pond pond) {
         System.out.println("The ducks are moving like crazy!");
         Collections.shuffle(pond.getPond());
-
+        return true;
     }
 
     @Override
