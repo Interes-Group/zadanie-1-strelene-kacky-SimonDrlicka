@@ -3,7 +3,7 @@ package sk.stuba.fei.uim.oop.game;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.ActionCard;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.duckoriented.DuckDance;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.duckoriented.DuckMarch;
-import sk.stuba.fei.uim.oop.game.cards.actioncards.duckoriented.Roshambo;
+import sk.stuba.fei.uim.oop.game.cards.actioncards.duckoriented.Scatter;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.duckoriented.TurboDuck;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.shooting.AimCard;
 import sk.stuba.fei.uim.oop.game.cards.actioncards.shooting.ShootCard;
@@ -95,8 +95,8 @@ public class Game {
             actionCards.addCard(new DuckMarch());
         }
         actionCards.addCard(new TurboDuck());
-        actionCards.addCard(new Roshambo());
-        actionCards.addCard(new Roshambo());
+        actionCards.addCard(new Scatter());
+        actionCards.addCard(new Scatter());
         actionCards.addCard(new DuckDance());
         actionCards.shuffle();
     }

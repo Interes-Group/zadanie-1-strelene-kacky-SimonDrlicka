@@ -22,6 +22,6 @@ public class DuckCard extends TileCard{
 
     @Override
     public String toString() {
-        return "Duck card: " + duck.toString();
+        return duck.toString();
     }
 }

@@ -15,10 +15,6 @@ public class Deck<T extends Card>{
         trash = new ArrayList<>();
     }
 
-    public List<T> getDeck(){
-        return deck;
-    }
-
     public T drawCard(){
         if(deck.isEmpty()){
             deck.addAll(trash);

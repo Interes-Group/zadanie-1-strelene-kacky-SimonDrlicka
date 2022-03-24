@@ -5,7 +5,8 @@ import sk.stuba.fei.uim.oop.game.pond.Pond;
 
 import java.util.Collections;
 
-public class Roshambo extends ActionCard {// idk lepsi preklad ma nenapadol :D
+public class Scatter extends ActionCard {// idk lepsi preklad ma nenapadol :D
+                                        //edit, este som too stoopid aby som si vsimol ze readme je aj v anglictine
 
     @Override
     public boolean performAction(Pond pond) {
@@ -16,6 +17,6 @@ public class Roshambo extends ActionCard {// idk lepsi preklad ma nenapadol :D
 
     @Override
     public String toString() {
-        return "Roshambo card";
+        return "Scatter card";
     }
 }
